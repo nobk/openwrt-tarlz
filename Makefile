@@ -34,12 +34,26 @@ define Package/tarlz/description
  Tarlz is a massively parallel (multi-threaded) combined implementation of the tar archiver and the lzip compressor. Tarlz creates, lists, and extracts archives in a simplified and safer variant of the POSIX pax format compressed with lzip, keeping the alignment between tar members and lzip members. The resulting multimember tar.lz archive is fully backward compatible with standard tar tools like GNU tar, which treat it like any other tar.lz archive. Tarlz can append files to the end of such compressed archives.
 endef
 
-HOST_BUILD_DEPENDS:=lzlib/host
+HOST_BUILD_DEPENDS:=lzlib/host plzip/host
 HOST_CONFIGURE_ARGS += \
         CXXFLAGS+="-I$(STAGING_DIR_HOSTPKG)/include" \
 	LDFLAGS="-L$(STAGING_DIR_HOSTPKG)/lib"
 
 CONFIGURE_VARS += CXXFLAGS="$$$$CXXFLAGS -fno-rtti"
+
+define Build/Prepare
+	rm -rf $(PKG_BUILD_DIR)/
+	mkdir -p $(PKG_BUILD_DIR)/
+	$(STAGING_DIR_HOST)/bin/plzip -dc $(DL_DIR)/$(PKG_SOURCE) | $(TAR) -xf - -C $(PKG_BUILD_DIR) --strip 1
+	$(Build/Patch)
+endef
+
+define Host/Prepare
+	rm -rf $(HOST_BUILD_DIR)/
+	mkdir -p $(HOST_BUILD_DIR)/
+	$(STAGING_DIR_HOST)/bin/plzip -dc $(DL_DIR)/$(PKG_SOURCE) | $(TAR) -xf - -C $(HOST_BUILD_DIR) --strip 1
+	$(Build/Patch)
+endef
 
 define Package/tarlz/install
 	$(INSTALL_DIR) $(1)/usr/bin
