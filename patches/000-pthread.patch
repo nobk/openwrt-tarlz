@@ -1,0 +1,10 @@
+--- a/archive_reader.cc 2020-10-11 09:15:56.590000000 +0800
++++ b/archive_reader.cc 2020-10-11 09:16:44.220000000 +0800
+@@ -26,6 +26,7 @@
+ #include <stdint.h>
+ #include <unistd.h>
+ #include <lzlib.h>
++#include <pthread.h>
+
+ #include "tarlz.h"
+ #include "lzip_index.h"

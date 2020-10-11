@@ -40,6 +40,7 @@ HOST_CONFIGURE_ARGS += \
 	LDFLAGS="-L$(STAGING_DIR_HOSTPKG)/lib -L$(TOOLCHAIN_DIR)/lib"
 
 CONFIGURE_VARS += CXXFLAGS="$$$$CXXFLAGS -fno-rtti -I$(TOOLCHAIN_DIR)/include"
+CONFIGURE_ARGS += CXXFLAGS="-Wall -W -O3 -I$(TOOLCHAIN_DIR)/include"
 
 define Build/Prepare
 	rm -rf $(PKG_BUILD_DIR)/
