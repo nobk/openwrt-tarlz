@@ -36,8 +36,8 @@ endef
 
 HOST_BUILD_DEPENDS:=lzlib/host plzip/host
 HOST_CONFIGURE_ARGS += \
-        CXXFLAGS+="-I$(STAGING_DIR_HOSTPKG)/include" \
-	LDFLAGS="-L$(STAGING_DIR_HOSTPKG)/lib"
+        CXXFLAGS+="-I$(STAGING_DIR_HOSTPKG)/include -I$(TOOLCHAIN_DIR)/include" \
+	LDFLAGS="-L$(STAGING_DIR_HOSTPKG)/lib -L$(TOOLCHAIN_DIR)/lib"
 
 CONFIGURE_VARS += CXXFLAGS="$$$$CXXFLAGS -fno-rtti"
 
