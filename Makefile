@@ -17,6 +17,8 @@ PKG_HASH:=20490c31ee4415baae40a7b876cbba101a642a1fe7f519865d25b79bbea9ed3e
 PKG_MAINTAINER:=
 PKG_LICENSE:=GPL-2.0+
 
+PKG_BUILD_DEPENDS:=plzip/host
+
 include $(INCLUDE_DIR)/uclibc++.mk
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
