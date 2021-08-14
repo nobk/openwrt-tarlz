@@ -1,5 +1,5 @@
 --- archive_reader.cc   2021-05-01 19:59:05.000000000 +0800
-+++ archive_reader.cc1  2021-08-14 22:10:03.428862800 +0800
++++ archive_reader.cc  2021-08-14 22:10:03.428862800 +0800
 @@ -22,6 +22,7 @@
  #include <stdint.h>    // for lzlib.h
  #include <unistd.h>
