@@ -8,18 +8,18 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tarlz
-PKG_VERSION:=0.29
+PKG_VERSION:=0.31
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.lz
 PKG_SOURCE_URL:=http://download.savannah.gnu.org/releases/lzip/$(PKG_NAME)
-PKG_HASH:=7e127f1e1b1b62ca6e3417fde32f3ae0481ba5886f56a8553a215b19d81c6c19
+PKG_HASH:=e7fafcaf83ce215d94f758ff07037a3fda4bcea006ccb7909ce3f83218e98f71
 PKG_MAINTAINER:=
 PKG_LICENSE:=GPL-2.0-or-later
 
 PKG_BUILD_DEPENDS:=plzip/host
 
-include $(INCLUDE_DIR)/uclibc++.mk
+CXX_DEPENDS:=+libstdcpp
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 
